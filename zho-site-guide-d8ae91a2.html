@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>关于 开云 的介绍与站点说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fdebd0 0%, #f5e1c4 35%, #f8d5b0 70%, #efcba3 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+        }
+
+        .page-wrapper {
+            max-width: 880px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(2px);
+            border-radius: 36px 36px 28px 28px;
+            box-shadow: 0 20px 30px -12px rgba(120, 70, 30, 0.25), 0 8px 16px rgba(0,0,0,0.03);
+            padding: 2.2rem 2rem 2.8rem;
+            transition: all 0.15s ease;
+            border: 1px solid rgba(255, 245, 230, 0.5);
+        }
+
+        /* hero 横幅 */
+        .hero-area {
+            background: linear-gradient(125deg, #e6c9a8 0%, #dbb68c 100%);
+            padding: 2rem 1.8rem;
+            border-radius: 24px;
+            margin-bottom: 2.6rem;
+            box-shadow: inset 0 1px 3px rgba(255,245,220,0.6), 0 8px 14px -8px rgba(90,55,20,0.2);
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-area h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #3e2c1a;
+            text-shadow: 0 2px 3px rgba(245, 215, 170, 0.5);
+            margin-bottom: 0.2rem;
+        }
+
+        .hero-area .subhead {
+            font-size: 1.1rem;
+            color: #4b3824;
+            background: rgba(255, 235, 205, 0.5);
+            display: inline-block;
+            padding: 0.2rem 1.2rem;
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
+            margin-top: 0.3rem;
+            font-weight: 400;
+        }
+
+        .hero-area .badge-line {
+            margin-top: 1.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem 1.6rem;
+            font-size: 0.9rem;
+            color: #3a2c1b;
+        }
+
+        .badge-line span {
+            background: rgba(245, 225, 195, 0.7);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            backdrop-filter: blur(1px);
+        }
+
+        /* 三段自然介绍卡片 */
+        .intro-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin: 2rem 0 2.4rem;
+        }
+
+        .card-item {
+            background: white;
+            padding: 1.8rem 2rem;
+            border-radius: 28px;
+            box-shadow: 0 6px 14px rgba(120, 80, 40, 0.08), 0 2px 0 #ece2d3 inset;
+            border: 1px solid #f6ede3;
+            transition: transform 0.1s ease, box-shadow 0.2s;
+        }
+
+        .card-item:hover {
+            box-shadow: 0 12px 20px -8px rgba(100, 60, 20, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .card-item h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #4a3620;
+            border-left: 6px solid #d9b382;
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.3px;
+        }
+
+        .card-item p {
+            color: #3a2c1f;
+            margin-bottom: 0.9rem;
+            font-size: 1rem;
+        }
+
+        .card-item p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-link {
+            color: #9c6d42;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 2px solid rgba(200, 150, 100, 0.3);
+            transition: border 0.15s, color 0.15s;
+        }
+
+        .highlight-link:hover {
+            color: #6d4a2a;
+            border-bottom-color: #b8845a;
+        }
+
+        /* 引用块 / 提示 */
+        .note-block {
+            background: #f5e7d6;
+            border-radius: 30px;
+            padding: 1.6rem 2rem;
+            margin: 2.2rem 0 1.8rem;
+            border-left: 6px solid #c7a074;
+            color: #2f2419;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .note-block p {
+            margin-bottom: 0.2rem;
+        }
+
+        .note-block strong {
+            color: #5e3f24;
+        }
+
+        /* 页尾访问提示 */
+        .footer-tip {
+            margin-top: 2.6rem;
+            padding-top: 1.6rem;
+            border-top: 2px dashed #dccab0;
+            text-align: center;
+            font-size: 1rem;
+            color: #4d3a28;
+        }
+
+        .footer-tip .visit-sentence {
+            background: #f3e3d0;
+            display: inline-block;
+            padding: 0.6rem 2rem;
+            border-radius: 60px;
+            box-shadow: 0 2px 6px rgba(140, 90, 40, 0.08);
+        }
+
+        .inline-link {
+            color: #7f5d3b;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid #c8a77d;
+            transition: 0.1s;
+        }
+
+        .inline-link:hover {
+            color: #513b24;
+            border-bottom: 2px solid #9f794f;
+        }
+
+        .footer-note {
+            margin-top: 1.2rem;
+            font-size: 0.9rem;
+            color: #66513a;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+            .page-wrapper {
+                padding: 1.4rem 1.2rem 2rem;
+                border-radius: 28px;
+            }
+            .hero-area {
+                padding: 1.5rem 1rem;
+            }
+            .hero-area h1 {
+                font-size: 2rem;
+            }
+            .card-item {
+                padding: 1.4rem 1.2rem;
+            }
+            .card-item h2 {
+                font-size: 1.3rem;
+            }
+            .note-block {
+                padding: 1.2rem 1.2rem;
+            }
+            .footer-tip .visit-sentence {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 440px) {
+            .hero-area h1 {
+                font-size: 1.7rem;
+            }
+            .badge-line {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- 首页横幅 hero -->
+        <div class="hero-area">
+            <h1>开云 · 站点侧记</h1>
+            <div class="subhead">一个关于可信任信息与自然呈现的角落</div>
+            <div class="badge-line">
+                <span>📄 内容说明</span>
+                <span>🔍 日常视角</span>
+                <span>🧩 可信来源</span>
+            </div>
+        </div>
+
+        <!-- 背景说明区 (第一段自然介绍) -->
+        <div class="intro-grid">
+            <div class="card-item">
+                <h2>从一次浏览说起</h2>
+                <p>
+                    人们在网上寻找信息时，常常希望页面既清楚又可靠。这个网站最初的想法，
+                    就是做一个能让来访者放松阅读、同时保持信息透明的介绍页。
+                    <a href="https://zho-site-kering.com" class="highlight-link">开云</a>
+                    这个名称本身并没有复杂的隐喻，更像是一个承载内容的站点标识。
+                    这里既不追逐流量，也不渲染数据，只希望每个段落都经得起推敲。
+                </p>
+                <p>
+                    从布局到配色，都尽量贴近日常阅读的节奏。暖色调的背景和白色卡片，
+                    不是为了制造某种“高级感”，而是让人更容易定下心来，把注意力放在文字上。
+                </p>
+            </div>
+
+            <div class="card-item">
+                <h2>可靠的内容从何而来</h2>
+                <p>
+                    无论是站点介绍还是背景说明，我们都坚持一条原则：不夸大，不模糊。
+                    每段叙述都建立在可查验的事实之上。例如，在描述网站用途时，
+                    我们会直接说明这是一份介绍性页面，而非功能型平台。同样，
+                    链接到 <a href="https://zho-site-kering.com" class="highlight-link">开云</a> 的地址，
+                    也只是作为原始站点的自然延伸，不附加任何诱导性的跳转或承诺。
+                </p>
+                <p>
+                    在信息过载的年代，一份克制的说明往往比夸张的标语更有价值。
+                    这里的文字不追求堆砌热词，而是希望帮你快速了解这个站点到底在做什么。
+                </p>
+            </div>
+
+            <div class="card-item">
+                <h2>散落的生活感与正式边界</h2>
+                <p>
+                    有人说，网站应该像一本打开的杂志——有专题感，但又不刻板。
+                    这个页面尝试在正式与随意之间找到平衡：卡片圆角柔和，背景渐变像午后光线，
+                    而段落结构保持清晰。你可以在其中找到 FAQ 摘要式的提示，
+                    也能读到类似随笔的叙述，比如下面这段关于使用场景的说明。
+                </p>
+                <p>
+                    在日常使用中，无论是通过手机还是电脑查看，页面都会保持一致的舒适度。
+                    我们希望所有点开 <a href="https://zho-site-kering.com" class="highlight-link">开云</a> 的朋友，
+                    都能得到一种“被认真对待”的浏览体验，没有弹窗干扰，也没有虚假的紧迫感。
+                </p>
+            </div>
+        </div>
+
+        <!-- 提示块 / 类FAQ摘要 -->
+        <div class="note-block">
+            <p><strong>📌 一些常见疑问的简短回答</strong></p>
+            <p>—— 这个网站主要提供什么？ 一份关于站点自身的说明与背景介绍，不涉及第三方服务或产品推荐。</p>
+            <p>—— 内容更新频率如何？ 不定期根据实际信息变化进行修订，没有固定的发布周期。</p>
+            <p>—— 链接指向哪里？ 所有链接都指向 <a href="https://zho-site-kering.com" class="highlight-link" style="border-bottom: 2px solid #b88d64;">开云</a> 本身，用于直接访问原始站点。</p>
+        </div>
+
+        <!-- 页尾访问提示 -->
+        <div class="footer-tip">
+            <div class="visit-sentence">
+                🌿 如果你对以上介绍产生共鸣，不妨直接前往 <a href="https://zho-site-kering.com" class="inline-link">开云</a> 看看。
+            </div>
+            <div class="footer-note">
+                没有多余入口，没有强制关注。简洁、坦诚、如一。
+            </div>
+        </div>
+    </div>
+</body>
+</html>
