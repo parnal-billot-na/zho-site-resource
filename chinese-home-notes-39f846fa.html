@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯专题知识库 · 持续关注指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', sans-serif;
+      background-color: #f5f7fa;
+      color: #1e2a3a;
+      line-height: 1.6;
+    }
+
+    /* 深色头图 */
+    .hero {
+      background: linear-gradient(145deg, #0b1a2e 0%, #0f2a44 70%, #153e60 100%);
+      color: #e6edf5;
+      padding: 3.5rem 1.5rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+      color: #f0f6ff;
+    }
+
+    .hero .subhead {
+      font-size: 1.05rem;
+      max-width: 640px;
+      margin: 0 auto 0.6rem;
+      color: #b8ccdd;
+      font-weight: 300;
+    }
+
+    .hero .badge-group {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.2rem;
+      margin-top: 1.2rem;
+    }
+
+    .hero .badge {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 40px;
+      padding: 0.3rem 1.2rem;
+      font-size: 0.8rem;
+      color: #cbddee;
+    }
+
+    /* 正文容器 */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* 目录感布局 —— 使用类似知识库入口的网格 */
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin: 2.5rem 0 1.2rem;
+      border-left: 5px solid #d4a017;
+      padding-left: 1rem;
+      color: #1e2a3a;
+    }
+
+    .link-accent {
+      color: #b8860b;
+      text-decoration: none;
+      border-bottom: 1px dashed #d4a017;
+      transition: border 0.2s, color 0.2s;
+    }
+
+    .link-accent:hover {
+      color: #8b6508;
+      border-bottom: 1px solid #8b6508;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 1.8rem 0 1rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.5rem 1.25rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.05);
+      transition: transform 0.15s, box-shadow 0.2s;
+      border: 1px solid #e9edf2;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #16202e;
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      color: #374a5e;
+      margin-bottom: 0.3rem;
+    }
+
+    .card .meta {
+      font-size: 0.8rem;
+      color: #7a8b9c;
+      margin-top: 0.6rem;
+      display: block;
+    }
+
+    .info-section {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 2rem;
+      margin: 2rem 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e6ecf3;
+    }
+
+    .info-section h2 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+    }
+
+    .info-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .info-section li {
+      padding: 0.5rem 0 0.5rem 1.8rem;
+      position: relative;
+      font-size: 0.95rem;
+    }
+
+    .info-section li::before {
+      content: "●";
+      color: #b8860b;
+      position: absolute;
+      left: 0;
+      font-size: 0.9rem;
+    }
+
+    .tip-box {
+      background: #f0f4fa;
+      border-left: 4px solid #b8860b;
+      padding: 1.2rem 1.5rem;
+      border-radius: 0 12px 12px 0;
+      margin: 1.8rem 0;
+    }
+
+    .tip-box strong {
+      color: #0f2a44;
+    }
+
+    .faq-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .faq-item {
+      flex: 1 1 200px;
+      background: #ffffff;
+      padding: 1rem 1.2rem;
+      border-radius: 14px;
+      border: 1px solid #e0e7ef;
+    }
+
+    .faq-item .q {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.3rem;
+      color: #1a2b3c;
+    }
+
+    .faq-item .a {
+      font-size: 0.9rem;
+      color: #3f5468;
+    }
+
+    .action-reminder {
+      text-align: center;
+      padding: 2rem 1rem 2.5rem;
+      border-top: 1px solid #dce3ec;
+      margin-top: 1.5rem;
+    }
+
+    .action-reminder p {
+      font-size: 1rem;
+      color: #2a3f55;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #6f8299;
+      font-size: 0.85rem;
+      border-top: 1px solid #dce3ec;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 1.7rem; }
+      .card-grid { gap: 1rem; }
+      .info-section { padding: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 深色头图 -->
+  <header class="hero">
+    <h1>⚽ 世界杯 · 知识库入口</h1>
+    <p class="subhead">持续关注 · 收藏指引 · 再次访问</p>
+    <div class="badge-group">
+      <span class="badge">📋 赛事档案</span>
+      <span class="badge">📅 关键节点</span>
+      <span class="badge">🌐 资讯源</span>
+      <span class="badge">🔖 收藏指南</span>
+    </div>
+  </header>
+
+  <!-- 正文区 浅色 -->
+  <div class="container">
+
+    <!-- 说明区：再次访问与收藏角度 -->
+    <h2 class="section-title">📌 关于再次访问与收藏</h2>
+    <p style="margin-bottom: 1rem;">对于热爱足球的爱好者，<a href="https://chinese-home-fifa2026.com" class="link-accent">世界杯</a>不仅是四年一度的盛会，更是一套持续更新的知识体系。当您再次回到这里，可以快速定位到历史资料、赛程推演或球队动态。建议将本页加入浏览器收藏夹或设备书签，以便后续直接访问核心内容。</p>
+    <p style="margin-bottom: 1rem;">我们整理了历届赛事的关键数据、晋级规则以及2026年美加墨世界杯的扩军变化，所有信息均保持克制而真实的叙述，不渲染不夸张，便于理性参考。</p>
+
+    <!-- 目录感网格：卡片区域 -->
+    <h2 class="section-title">📚 知识模块速览</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>🏆 历届冠军录</h3>
+        <p>从1930到2022，冠亚军、比分、举办国及经典比赛摘要。适合快速查阅历史。</p>
+        <span class="meta">更新至2022卡塔尔</span>
+      </div>
+      <div class="card">
+        <h3>🌍 参赛队演变</h3>
+        <p>扩军至48队后的席位分配、预选赛路径及东道主自动晋级规则简述。</p>
+        <span class="meta">2026新制</span>
+      </div>
+      <div class="card">
+        <h3>📅 关键时间线</h3>
+        <p>预选赛阶段、抽签仪式、小组赛及淘汰赛大致窗口。长期关注者可预设提醒。</p>
+        <span class="meta">持续更新</span>
+      </div>
+      <div class="card">
+        <h3>🧠 战术与规则</h3>
+        <p>越位、VAR、换人名额、加时赛等基础规则说明，方便新观众快速理解。</p>
+        <span class="meta">入门适用</span>
+      </div>
+    </div>
+
+    <!-- 提示区：如何持续关注 -->
+    <div class="tip-box">
+      <strong>💡 持续关注提示：</strong> 将本站设为浏览器主页或使用RSS订阅（如有）可获取赛程变动与数据更新。另外，您也可以定期回访「再次访问」板块，所有内容均保留历史版本供对照。
+    </div>
+
+    <!-- 相关信息区：FAQ 摘要 + 补充说明 -->
+    <div class="info-section">
+      <h2>❓ 常见问题摘要</h2>
+      <ul>
+        <li><strong>2026年世界杯在哪几个国家举办？</strong> 美国、加拿大、墨西哥联合主办，共16座城市。</li>
+        <li><strong>参赛队伍数量有何变化？</strong> 从32支扩军至48支，小组赛阶段分为16个小组，每组3队。</li>
+        <li><strong>如何快速找到往届比赛结果？</strong> 本站「历届冠军录」模块已整理完整列表，并标注了经典决赛比分。</li>
+        <li><strong>是否有手机端适配？</strong> 本页面采用响应式设计，可在手机或平板下正常浏览卡片与导航。</li>
+      </ul>
+    </div>
+
+    <!-- 额外特色：再次访问场景 -->
+    <div class="faq-summary">
+      <div class="faq-item">
+        <span class="q">🔁 再次访问</span>
+        <span class="a">直接访问 <a href="https://chinese-home-fifa2026.com" class="link-accent">世界杯</a> 首页即可看到最新置顶内容，历史文章按专题归档。</span>
+      </div>
+      <div class="faq-item">
+        <span class="q">⭐ 收藏建议</span>
+        <span class="a">浏览器收藏夹命名建议：「世界杯知识库 · 2026」方便与其他站点区分。</span>
+      </div>
+      <div class="faq-item">
+        <span class="q">📆 关注节奏</span>
+        <span class="a">预选赛期间每月更新一次，决赛阶段前逐步加密。无冗余推送。</span>
+      </div>
+    </div>
+
+    <!-- 再次强调链接，自然嵌入句子 -->
+    <div class="action-reminder">
+      <p>若您希望系统了解整个赛事脉络，可直接从 <a href="https://chinese-home-fifa2026.com" class="link-accent">世界杯</a> 知识库首页开始浏览。所有内容均经过校对，保持中立客观。</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>基于公开资料整理 · 内容仅供参考 · 更新日期 2025 · 无诱导性表述</p>
+  </footer>
+
+</body>
+</html>
